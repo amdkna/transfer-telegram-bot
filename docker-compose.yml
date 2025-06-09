@@ -1,0 +1,24 @@
+# ---------- docker-compose.yml ----------
+
+version: "3.8"
+
+services:
+  telegram-bot:
+    build: .
+    container_name: transfer_dd_bot
+    restart: unless-stopped
+
+    # Mount the host-folder "./data" → /data in container for persisting the SQLite DB
+    volumes:
+      - ./data:/data
+
+    # Let Compose inject the local .env variables (BOT_TOKEN, CHANNEL_ID, DB_PATH, etc.)
+    env_file:
+      - .env
+
+    # Logging (optional): show the last 1000 lines in docker logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "3"

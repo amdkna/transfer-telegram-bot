@@ -1,0 +1,15 @@
+# Secrets
+.env
+.env_pon_001
+
+# Databases, backups, zips
+*.db
+*.zip
+ads.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Docker
+.dockerignore
